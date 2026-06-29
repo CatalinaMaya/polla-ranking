@@ -158,7 +158,6 @@ def generar_html(ranking: list, output="index.html"):
             <td class=\"nombre\">{p['nombre']}</td>
             <td class=\"num\">{p['primera']}</td>
             <td class=\"num actual\">{p['actual']}</td>
-            <td class=\"num real\">{p['real']}</td>
         </tr>"""
 
     # Tabla 2: ranking por puntaje real
