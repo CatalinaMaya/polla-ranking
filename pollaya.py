@@ -125,13 +125,12 @@ def scrape_puntajes(page) -> dict:
 
 
 def calcular_ranking(puntajes_actuales: dict) -> list:
-    """Cruza con 1era ronda y calcula Real = Actual - 1era ronda."""
     ranking = []
     for nombre, primera in PRIMERA_RONDA.items():
         actual = puntajes_actuales.get(nombre)
         if actual is None:
-            print(f"⚠️  '{nombre}' no encontrado en Pollaya. Usando puntaje manual si existe.")
-            actual = primera  # fallback: real = 0
+            print(f"⚠️  '{nombre}' no encontrado en Pollaya.")
+            actual = primera
         real = actual - primera
         ranking.append({"nombre": nombre, "actual": actual, "primera": primera, "real": real})
 
@@ -141,6 +140,8 @@ def calcular_ranking(puntajes_actuales: dict) -> list:
             p["pos"] = i + 1
         else:
             p["pos"] = ranking[i - 1]["pos"]
+
+    return ranking  # <-- verifica que esta línea esté
 
 def generar_html(ranking: list, output="ranking.html"):
     medallas = {1: "🥇", 2: "🥈", 3: "🥉"}
