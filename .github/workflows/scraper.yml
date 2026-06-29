@@ -24,7 +24,7 @@ jobs:
         env:
           POLLAYA_EMAIL: ${{ secrets.POLLAYA_EMAIL }}
           POLLAYA_PASSWORD: ${{ secrets.POLLAYA_PASSWORD }}
-        run: python pollaya_scraper.py
+        run: python pollaya.py
 
       - name: Desplegar en Netlify
         run: |
