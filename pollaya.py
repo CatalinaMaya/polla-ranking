@@ -269,7 +269,7 @@ def generar_html(ranking: list, output="index.html"):
   </section>
 
   <section>
-    <div class=\"section-title\">PUNTAJES</div>
+    <div class=\"section-title\">TABLA PUNTAJES</div>
     <div class=\"card\">
       <table>
         <thead>
