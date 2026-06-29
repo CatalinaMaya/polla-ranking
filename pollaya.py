@@ -276,7 +276,7 @@ def generar_html(ranking: list, output="ranking.html"):
 
 def main():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=True)
 
         if os.path.exists(SESSION_FILE):
             print(f"♻️  Reutilizando sesión desde {SESSION_FILE}")
