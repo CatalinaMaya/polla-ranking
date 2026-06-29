@@ -158,7 +158,7 @@ def generar_html(ranking: list, output="index.html"):
             <td class=\"nombre\">{p['nombre']}</td>
             <td class=\"num\">{p['primera']}</td>
             <td class=\"num actual\">{p['actual']}</td>
-            <td class=\"num real\">{p['real']:+}</td>
+            <td class=\"num real\">{p['real']}</td>
         </tr>"""
 
     # Tabla 2: ranking por puntaje real
@@ -170,7 +170,7 @@ def generar_html(ranking: list, output="index.html"):
         <tr class=\"{top3_class}\">
             <td class=\"pos\">{medalla}</td>
             <td class=\"nombre\">{p['nombre']}</td>
-            <td class=\"num real\">{p['real']:+}</td>
+            <td class=\"num real\">{p['real']}</td>
         </tr>"""
 
     html = f"""<!DOCTYPE html>
@@ -228,14 +228,45 @@ def generar_html(ranking: list, output="index.html"):
   td.actual {{ color: #58a6ff; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }}
   td.real {{ font-weight: 700; font-size: 15px; color: #3fb950; text-align: right; font-variant-numeric: tabular-nums; }}
   .footer {{ font-size: 11px; color: #484f58; }}
+
+  button {{
+    margin-top: 16px;
+    background: #238636;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }}
+  button:hover {{ background: #2ea043; }}
+  button:disabled {{ background: #484f58; cursor: not-allowed; }}
 </style>
 </head>
 <body>
   <header>
-    <div class=\"badge\">⚽ Pollaya 2026</div>
-    <h1>POLLA<br>2DA RONDA</h1>
+    <div class=\"badge\">⚽ Mundial 2026</div>
+    <h1>POLLA MAYIRELI</h1>
     <p class=\"subtitle\">Real = Puntaje actual − 1ª ronda</p>
   </header>
+
+  <section>
+    <div class=\"section-title\">RANKING</div>
+    <div class=\"card\">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Participante</th>
+            <th class=\"num\">Puntaje Real</th>
+          </tr>
+        </thead>
+        <tbody>{filas_ranking}</tbody>
+      </table>
+    </div>
+  </section>
 
   <section>
     <div class=\"section-title\">PUNTAJES</div>
@@ -254,23 +285,23 @@ def generar_html(ranking: list, output="index.html"):
     </div>
   </section>
 
-  <section>
-    <div class=\"section-title\">RANKING 2DA RONDA</div>
-    <div class=\"card\">
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>Participante</th>
-            <th class=\"num\">Puntaje Real</th>
-          </tr>
-        </thead>
-        <tbody>{filas_ranking}</tbody>
-      </table>
-    </div>
-  </section>
-
+  
   <p class=\"footer\">Última actualización desde Pollaya: {fecha}</p>
+  <button onclick=\"actualizar()\" id=\"btn\">🔄 Actualizar ahora</button>
+  <script>
+  async function actualizar() {{
+    const btn = document.getElementById('btn');
+    btn.textContent = '⏳ Actualizando...';
+    btn.disabled = true;
+    const res = await fetch('/.netlify/functions/trigger', {{ method: 'POST' }});
+    if (res.ok) {{
+      btn.textContent = '✅ Listo! En ~2 min se actualiza';
+    }} else {{
+      btn.textContent = '❌ Error, intenta de nuevo';
+      btn.disabled = false;
+    }}
+  }}
+  </script>
 
 </body>
 </html>"""
@@ -307,7 +338,7 @@ def main():
 
     print("\n--- RANKING ---")
     for p in ranking:
-        print(f"  #{p['pos']} {p['nombre']}: Real={p['real']:+} (Actual={p['actual']}, 1ra={p['primera']})")
+        print(f"  #{p['pos']} {p['nombre']}: Real={p['real']} (Actual={p['actual']}, 1ra={p['primera']})")
 
     html_file = generar_html(ranking)
     webbrowser.open(f"file:///{os.path.abspath(html_file)}")
