@@ -20,6 +20,9 @@ jobs:
           pip install playwright
           playwright install chromium --with-deps
 
+      - name: Crear archivo de sesión
+        run: echo '${{ secrets.POLLAYA_SESSION }}' > pollaya_session.json
+
       - name: Correr scraper
         env:
           POLLAYA_EMAIL: ${{ secrets.POLLAYA_EMAIL }}
