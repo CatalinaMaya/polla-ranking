@@ -145,8 +145,9 @@ def calcular_ranking(puntajes_actuales: dict) -> list:
 
 def generar_html(ranking: list, output="index.html"):
 
-    from datetime import datetime
-    fecha = datetime.now().strftime("%d/%m/%Y %I:%M %p")
+    from datetime import datetime, timezone, timedelta
+    col_tz = timezone(timedelta(hours=-5))
+    fecha = datetime.now(col_tz).strftime("%d/%m/%Y %I:%M %p")
     medallas = {1: "🥇", 2: "🥈", 3: "🥉"}
 
     # Tabla 1: puntajes ordenados por nombre original
