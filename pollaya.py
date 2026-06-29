@@ -277,7 +277,6 @@ def generar_html(ranking: list, output="index.html"):
             <th>Participante</th>
             <th class=\"num\">1ª Ronda</th>
             <th class=\"num\">Actual</th>
-            <th class=\"num\">Real</th>
           </tr>
         </thead>
         <tbody>{filas_puntajes}</tbody>
