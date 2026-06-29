@@ -1,0 +1,35 @@
+name: Actualizar Ranking
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Instalar dependencias
+        run: |
+          pip install playwright
+          playwright install chromium --with-deps
+
+      - name: Correr scraper
+        env:
+          POLLAYA_EMAIL: ${{ secrets.POLLAYA_EMAIL }}
+          POLLAYA_PASSWORD: ${{ secrets.POLLAYA_PASSWORD }}
+        run: python pollaya_scraper.py
+
+      - name: Desplegar en Netlify
+        run: |
+          npm install -g netlify-cli
+          netlify deploy --prod --dir=. --filter ranking.html
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
