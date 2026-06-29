@@ -9,8 +9,8 @@ import webbrowser
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
 
 # ─── CONFIGURACIÓN ────────────────────────────────────────────────────────────
-EMAIL     = "tu@correo.com"       # <-- cambia esto
-PASSWORD  = "tu_contraseña"       # <-- cambia esto
+EMAIL     = "cmayairegui@gmail.com"       # <-- cambia esto
+PASSWORD  = "ca230600ta"       # <-- cambia esto
 GROUP_URL = "https://game.pollaya.com/mis-grupos/120344/posiciones"
 SESSION_FILE = "pollaya_session.json"
 
