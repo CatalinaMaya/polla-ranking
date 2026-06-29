@@ -275,6 +275,7 @@ def generar_html(ranking: list, output="ranking.html"):
     return output
 
 def main():
+    puntajes = {}
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
 
@@ -291,6 +292,10 @@ def main():
 
         puntajes = scrape_puntajes(page)
         browser.close()
+
+    if not puntajes:
+        print("❌ No se obtuvieron puntajes")
+        return
 
     ranking = calcular_ranking(puntajes)
 
