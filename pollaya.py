@@ -287,18 +287,44 @@ def generar_html(ranking: list, output="index.html"):
   
   <p class=\"footer\">Última actualización desde Pollaya: {fecha}</p>
   <button onclick=\"actualizar()\" id=\"btn\">🔄 Actualizar ahora</button>
+  <div id=\"progress-container\" style=\"display:none; width:100%; max-width:760px; margin-top:16px;\">
+    <div style=\"font-size:12px; color:#8b949e; margin-bottom:6px;\" id=\"progress-label\">Actualizando... 0%</div>
+    <div style=\"background:#21262d; border-radius:8px; height:8px; overflow:hidden;\">
+      <div id=\"progress-bar\" style=\"height:100%; width:0%; background:linear-gradient(90deg,#58a6ff,#bc8cff); border-radius:8px; transition:width 0.5s ease;\"></div>
+    </div>
+  </div>
   <script>
   async function actualizar() {{
     const btn = document.getElementById('btn');
-    btn.textContent = '⏳ Actualizando...';
+    const container = document.getElementById('progress-container');
+    const bar = document.getElementById('progress-bar');
+    const label = document.getElementById('progress-label');
+
+    btn.textContent = '⏳ Iniciando...';
     btn.disabled = true;
+
     const res = await fetch('/.netlify/functions/trigger', {{ method: 'POST' }});
-    if (res.ok) {{
-      btn.textContent = '✅ Listo! En ~2 min se actualiza';
-    }} else {{
+    if (!res.ok) {{
       btn.textContent = '❌ Error, intenta de nuevo';
       btn.disabled = false;
+      return;
     }}
+
+    container.style.display = 'block';
+    const duracion = 120;
+    let segundos = 0;
+    const intervalo = setInterval(() => {{
+      segundos++;
+      const pct = Math.min(Math.round((segundos / duracion) * 100), 100);
+      bar.style.width = pct + '%';
+      label.textContent = `Actualizando... ${{pct}}% (${{duracion - segundos}}s restantes)`;
+      if (segundos >= duracion) {{
+        clearInterval(intervalo);
+        label.textContent = '✅ Listo! Recarga la página para ver los cambios';
+        btn.textContent = '🔄 Actualizar de nuevo';
+        btn.disabled = false;
+      }}
+    }}, 1000);
   }}
   </script>
 
