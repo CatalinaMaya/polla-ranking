@@ -144,6 +144,8 @@ def calcular_ranking(puntajes_actuales: dict) -> list:
     return ranking  # <-- verifica que esta línea esté
 
 def generar_html(ranking: list, output="ranking.html"):
+    from datetime import datetime
+    fecha = datetime.now().strftime("%d/%m/%Y %I:%M %p")
     medallas = {1: "🥇", 2: "🥈", 3: "🥉"}
 
     # Tabla 1: puntajes ordenados por nombre original
@@ -266,7 +268,8 @@ def generar_html(ranking: list, output="ranking.html"):
     </div>
   </section>
 
-  <p class=\"footer\">Actualizado automáticamente desde Pollaya</p>
+  <p class=\"footer\">Última actualización desde Pollaya: {fecha}</p>
+
 </body>
 </html>"""
 
