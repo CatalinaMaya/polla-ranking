@@ -143,7 +143,8 @@ def calcular_ranking(puntajes_actuales: dict) -> list:
 
     return ranking  # <-- verifica que esta línea esté
 
-def generar_html(ranking: list, output="ranking.html"):
+def generar_html(ranking: list, output="index.html"):
+
     from datetime import datetime
     fecha = datetime.now().strftime("%d/%m/%Y %I:%M %p")
     medallas = {1: "🥇", 2: "🥈", 3: "🥉"}
