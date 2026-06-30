@@ -305,7 +305,7 @@ def generar_html(ranking: list, output="index.html"):
     btn.textContent = '⏳ Iniciando...';
     btn.disabled = true;
 
-    const res = await fetch('https://api.github.com/repos/CatalinaMaya/polla-ranking/actions/workflows/scraper.yml/dispatches', {{
+    const res = await fetch('https://polla-trigger.cmayairegui.workers.dev', {{
       method: 'POST',
       headers: {{
         'Authorization': 'Bearer {GITHUB_TOKEN}',
