@@ -305,7 +305,7 @@ def generar_html(ranking: list, output="index.html"):
     const res = await fetch('https://api.github.com/repos/CatalinaMaya/polla-ranking/actions/workflows/scraper.yml/dispatches', {{
       method: 'POST',
       headers: {{
-        'Authorization': 'Bearer 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',
+        'Authorization': 'Bearer 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',
         'Accept': 'application/vnd.github.v3+json',
         'Content-Type': 'application/json'
       }},
