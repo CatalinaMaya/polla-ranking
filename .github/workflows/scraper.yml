@@ -31,6 +31,9 @@ jobs:
           POLLAYA_EMAIL: ${{ secrets.POLLAYA_EMAIL }}
           POLLAYA_PASSWORD: ${{ secrets.POLLAYA_PASSWORD }}
         run: python pollaya.py
+      
+      - name: Verificar archivos generados
+        run: ls -la *.html || echo "No hay archivos HTML"
 
       - name: Publicar en GitHub Pages
         run: |
