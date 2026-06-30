@@ -302,7 +302,16 @@ def generar_html(ranking: list, output="index.html"):
     btn.textContent = '⏳ Iniciando...';
     btn.disabled = true;
 
-    const res = await fetch('/.netlify/functions/trigger', {{ method: 'POST' }});
+    const res = await fetch('https://api.github.com/repos/CatalinaMaya/polla-ranking/actions/workflows/scraper.yml/dispatches', {{
+      method: 'POST',
+      headers: {{
+        'Authorization': 'Bearer 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',
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      }},
+      body: JSON.stringify({{ ref: 'master' }})
+    }});
+
     if (!res.ok) {{
       btn.textContent = '❌ Error, intenta de nuevo';
       btn.disabled = false;
