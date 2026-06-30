@@ -200,7 +200,7 @@
   </section>
 
   
-  <p class="footer">Última actualización desde Pollaya: 30/06/2026 02:17 PM</p>
+  <p class="footer">Última actualización desde Pollaya: 30/06/2026 02:22 PM</p>
   <button onclick="actualizar()" id="btn">🔄 Actualizar ahora</button>
   <div id="progress-container" style="display:none; width:100%; max-width:760px; margin-top:16px;">
     <div style="font-size:12px; color:#8b949e; margin-bottom:6px;" id="progress-label">Actualizando... 0%</div>
@@ -219,13 +219,7 @@
     btn.disabled = true;
 
     const res = await fetch('https://polla-trigger.cmayairegui.workers.dev', {
-      method: 'POST',
-      headers: {
-        'Authorization': 'Bearer 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',
-        'Accept': 'application/vnd.github.v3+json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ ref: 'master' })
+      method: 'POST'
     });
 
     if (!res.ok) {
