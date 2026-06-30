@@ -13,6 +13,8 @@ EMAIL    = os.environ.get("POLLAYA_EMAIL", "tu@correo.com")
 PASSWORD = os.environ.get("POLLAYA_PASSWORD", "tu_contraseña")
 GROUP_URL = "https://game.pollaya.com/mis-grupos/120344/posiciones"
 SESSION_FILE = "pollaya_session.json"
+GITHUB_TOKEN = os.environ.get("BOTON_TOKEN", "")
+
 
 # Puntajes fijos de 1era ronda (nombre exacto en Pollaya → puntaje)
 PRIMERA_RONDA = {
@@ -305,7 +307,7 @@ def generar_html(ranking: list, output="index.html"):
     const res = await fetch('https://api.github.com/repos/CatalinaMaya/polla-ranking/actions/workflows/scraper.yml/dispatches', {{
       method: 'POST',
       headers: {{
-        'Authorization': 'Bearer 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',
+        'Authorization': 'Bearer {GITHUB_TOKEN}',
         'Accept': 'application/vnd.github.v3+json',
         'Content-Type': 'application/json'
       }},

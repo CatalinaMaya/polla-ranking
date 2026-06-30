@@ -30,6 +30,7 @@ jobs:
         env:
           POLLAYA_EMAIL: ${{ secrets.POLLAYA_EMAIL }}
           POLLAYA_PASSWORD: ${{ secrets.POLLAYA_PASSWORD }}
+          BOTON_TOKEN: ${{ secrets.BOTON_TOKEN }}
         run: python pollaya.py
       
       - name: Verificar archivos generados
