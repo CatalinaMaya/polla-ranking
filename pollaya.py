@@ -306,13 +306,7 @@ def generar_html(ranking: list, output="index.html"):
     btn.disabled = true;
 
     const res = await fetch('https://polla-trigger.cmayairegui.workers.dev', {{
-      method: 'POST',
-      headers: {{
-        'Authorization': 'Bearer {GITHUB_TOKEN}',
-        'Accept': 'application/vnd.github.v3+json',
-        'Content-Type': 'application/json'
-      }},
-      body: JSON.stringify({{ ref: 'master' }})
+      method: 'POST'
     }});
 
     if (!res.ok) {{
