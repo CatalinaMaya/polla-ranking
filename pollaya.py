@@ -14,6 +14,7 @@ PASSWORD = os.environ.get("POLLAYA_PASSWORD", "tu_contraseña")
 GROUP_URL = "https://game.pollaya.com/mis-grupos/120344/posiciones"
 SESSION_FILE = "pollaya_session.json"
 GITHUB_TOKEN = os.environ.get("BOTON_TOKEN", "")
+print(f"🔑 Token cargado: {'SÍ' if GITHUB_TOKEN else 'NO'}")
 
 
 # Puntajes fijos de 1era ronda (nombre exacto en Pollaya → puntaje)
