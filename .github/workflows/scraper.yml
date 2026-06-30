@@ -2,7 +2,7 @@ name: Actualizar Ranking
 
 on:
   schedule:
-    - cron: '0 */2 * * *'
+    - cron: '0 * * * *'
   workflow_dispatch:
 
 jobs:
@@ -29,10 +29,10 @@ jobs:
           POLLAYA_PASSWORD: ${{ secrets.POLLAYA_PASSWORD }}
         run: python pollaya.py
 
-      - name: Desplegar en Netlify
+      - name: Publicar en GitHub Pages
         run: |
-          npm install -g netlify-cli
-          netlify deploy --prod --dir=. --filter ranking.html
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add index.html
+          git commit -m "actualizar ranking" || echo "Sin cambios"
+          git push
