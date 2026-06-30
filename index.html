@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranking Pollaya — 2da Ronda</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0d1117; color: #e6edf3;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; padding: 40px 16px 60px; gap: 48px;
+  }
+  header { text-align: center; }
+  .badge {
+    display: inline-block; background: #238636; color: #fff;
+    font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+    text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 12px;
+  }
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 8vw, 72px); letter-spacing: 2px; line-height: 1;
+    background: linear-gradient(135deg, #58a6ff 0%, #bc8cff 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .subtitle { margin-top: 8px; font-size: 13px; color: #8b949e; }
+  section { width: 100%; max-width: 760px; }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 1.5px;
+    color: #8b949e; margin-bottom: 12px; border-left: 3px solid #58a6ff; padding-left: 10px;
+  }
+  .card {
+    background: #161b22; border: 1px solid #30363d;
+    border-radius: 12px; overflow: hidden;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  thead th {
+    background: #1c2128; font-size: 10px; font-weight: 600;
+    letter-spacing: 1.2px; text-transform: uppercase; color: #8b949e;
+    padding: 12px 18px; text-align: left;
+  }
+  thead th.num { text-align: right; }
+  tbody tr { border-top: 1px solid #21262d; transition: background 0.15s; }
+  tbody tr:hover { background: #1c2128; }
+  tbody tr.top3 { background: #0d1f0f; }
+  tbody tr.top3:hover { background: #112613; }
+  td { padding: 14px 18px; font-size: 14px; }
+  td.pos { font-size: 18px; width: 52px; text-align: center; }
+  td.nombre { font-weight: 500; color: #c9d1d9; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; color: #8b949e; }
+  td.actual { color: #58a6ff; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
+  td.real { font-weight: 700; font-size: 15px; color: #3fb950; text-align: right; font-variant-numeric: tabular-nums; }
+  .footer { font-size: 11px; color: #484f58; }
+
+  button {
+    margin-top: 16px;
+    background: #238636;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  button:hover { background: #2ea043; }
+  button:disabled { background: #484f58; cursor: not-allowed; }
+</style>
+</head>
+<body>
+  <header>
+    <div class="badge">⚽ Mundial 2026</div>
+    <h1>POLLA MAYIRELI</h1>
+    <p class="subtitle">Real = Puntaje actual − 1ª ronda</p>
+  </header>
+
+  <section>
+    <div class="section-title">RANKING</div>
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Participante</th>
+            <th class="num">Puntaje Real</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr class="top3">
+            <td class="pos">🥇</td>
+            <td class="nombre">Marcela Maya Iregui</td>
+            <td class="num real">355</td>
+        </tr>
+        <tr class="top3">
+            <td class="pos">🥈</td>
+            <td class="nombre">Carlos Hernan cadavid gonzalez</td>
+            <td class="num real">338</td>
+        </tr>
+        <tr class="top3">
+            <td class="pos">🥉</td>
+            <td class="nombre">Yenifer Avendaño Montoya</td>
+            <td class="num real">332</td>
+        </tr>
+        <tr class="">
+            <td class="pos">#4</td>
+            <td class="nombre">Leopaispaisa</td>
+            <td class="num real">328</td>
+        </tr>
+        <tr class="">
+            <td class="pos">#5</td>
+            <td class="nombre">Catalina Maya Iregui</td>
+            <td class="num real">327</td>
+        </tr>
+        <tr class="">
+            <td class="pos">#6</td>
+            <td class="nombre">LUIS FERNANDO BUSTAMANTE MONSALVE</td>
+            <td class="num real">324</td>
+        </tr>
+        <tr class="">
+            <td class="pos">#7</td>
+            <td class="nombre">Alejandro Morales</td>
+            <td class="num real">322</td>
+        </tr>
+        <tr class="">
+            <td class="pos">#8</td>
+            <td class="nombre">Soraya Iregui lotero</td>
+            <td class="num real">285</td>
+        </tr>
+        <tr class="">
+            <td class="pos">#9</td>
+            <td class="nombre">Hernando Maya</td>
+            <td class="num real">274</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">TABLA PUNTAJES</div>
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>Participante</th>
+            <th class="num">1ª Ronda</th>
+            <th class="num">Actual</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="nombre">Marcela Maya Iregui</td>
+            <td class="num">299</td>
+            <td class="num actual">654</td>
+        </tr>
+        <tr>
+            <td class="nombre">Yenifer Avendaño Montoya</td>
+            <td class="num">296</td>
+            <td class="num actual">628</td>
+        </tr>
+        <tr>
+            <td class="nombre">Carlos Hernan cadavid gonzalez</td>
+            <td class="num">294</td>
+            <td class="num actual">632</td>
+        </tr>
+        <tr>
+            <td class="nombre">Catalina Maya Iregui</td>
+            <td class="num">287</td>
+            <td class="num actual">614</td>
+        </tr>
+        <tr>
+            <td class="nombre">Alejandro Morales</td>
+            <td class="num">284</td>
+            <td class="num actual">606</td>
+        </tr>
+        <tr>
+            <td class="nombre">Leopaispaisa</td>
+            <td class="num">280</td>
+            <td class="num actual">608</td>
+        </tr>
+        <tr>
+            <td class="nombre">LUIS FERNANDO BUSTAMANTE MONSALVE</td>
+            <td class="num">272</td>
+            <td class="num actual">596</td>
+        </tr>
+        <tr>
+            <td class="nombre">Soraya Iregui lotero</td>
+            <td class="num">265</td>
+            <td class="num actual">550</td>
+        </tr>
+        <tr>
+            <td class="nombre">Hernando Maya</td>
+            <td class="num">234</td>
+            <td class="num actual">508</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  
+  <p class="footer">Última actualización desde Pollaya: 30/06/2026 01:35 PM</p>
+  <button onclick="actualizar()" id="btn">🔄 Actualizar ahora</button>
+  <div id="progress-container" style="display:none; width:100%; max-width:760px; margin-top:16px;">
+    <div style="font-size:12px; color:#8b949e; margin-bottom:6px;" id="progress-label">Actualizando... 0%</div>
+    <div style="background:#21262d; border-radius:8px; height:8px; overflow:hidden;">
+      <div id="progress-bar" style="height:100%; width:0%; background:linear-gradient(90deg,#58a6ff,#bc8cff); border-radius:8px; transition:width 0.5s ease;"></div>
+    </div>
+  </div>
+  <script>
+  async function actualizar() {
+    const btn = document.getElementById('btn');
+    const container = document.getElementById('progress-container');
+    const bar = document.getElementById('progress-bar');
+    const label = document.getElementById('progress-label');
+
+    btn.textContent = '⏳ Iniciando...';
+    btn.disabled = true;
+
+    const res = await fetch('https://api.github.com/repos/CatalinaMaya/polla-ranking/actions/workflows/scraper.yml/dispatches', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer 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',
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ ref: 'master' })
+    });
+
+    if (!res.ok) {
+      btn.textContent = '❌ Error, intenta de nuevo';
+      btn.disabled = false;
+      return;
+    }
+
+    container.style.display = 'block';
+    const duracion = 120;
+    let segundos = 0;
+    const intervalo = setInterval(() => {
+      segundos++;
+      const pct = Math.min(Math.round((segundos / duracion) * 100), 100);
+      bar.style.width = pct + '%';
+      label.textContent = `Actualizando... ${pct}% (${duracion - segundos}s restantes)`;
+      if (segundos >= duracion) {
+        clearInterval(intervalo);
+        label.textContent = '✅ Listo! Recarga la página para ver los cambios';
+        btn.textContent = '🔄 Actualizar de nuevo';
+        btn.disabled = false;
+      }
+    }, 1000);
+  }
+  </script>
+
+</body>
+</html>
