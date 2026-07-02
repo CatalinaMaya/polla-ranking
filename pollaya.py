@@ -276,6 +276,14 @@ def generar_html(ranking: list, output="index.html"):
     }}
   }}
 
+  th.sortable {{
+    cursor: pointer;
+    user-select: none;
+  }}
+  th.sortable:hover {{
+    color: #58a6ff;
+  }}
+
 </style>
 </head>
 <body>
@@ -302,21 +310,23 @@ def generar_html(ranking: list, output="index.html"):
   </section>
 
   <section>
-    <div class=\"section-title\">TABLA PUNTAJES</div>
-    <div class=\"card\">
-      <table>
-        <thead>
-          <tr>
-            <th>Participante</th>
-            <th class=\"num\">1ª Ronda</th>
-            <th class="num">2ª Ronda</th>
-            <th class=\"num\">Puntaje Pollaya</th>
-          </tr>
-        </thead>
-        <tbody>{filas_puntajes}</tbody>
-      </table>
-    </div>
-  </section>
+      <div class="section-title">PUNTAJES</div>
+      <div class="card">
+        <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+          <table id="tabla-puntajes" style="min-width: 500px;">
+            <thead>
+              <tr>
+                <th onclick="sortTable(0)" class="sortable" style="min-width:140px;">Participante ↕</th>
+                <th onclick="sortTable(1)" class="sortable num" style="min-width:80px;">1ª Ronda ↕</th>
+                <th onclick="sortTable(2)" class="sortable num" style="min-width:80px;">2ª Ronda ↕</th>
+                <th onclick="sortTable(3)" class="sortable num" style="min-width:80px;">Puntaje Pollaya ↕</th>
+              </tr>
+            </thead>
+            <tbody>{filas_puntajes}</tbody>
+          </table>
+        </div>
+      </div>
+    </section>
   
   <p class=\"footer\">Última actualización desde Pollaya: {fecha}</p>
   <button onclick=\"actualizar()\" id=\"btn\">🔄 Actualizar ahora</button>
@@ -364,6 +374,30 @@ def generar_html(ranking: list, output="index.html"):
   }}
   </script>
 
+  <script>
+  let sortDir = {{}};
+  function sortTable(col) {{
+    const table = document.getElementById('tabla-puntajes');
+    const tbody = table.querySelector('tbody');
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+    const asc = !sortDir[col];
+    sortDir = {{}};
+    sortDir[col] = asc;
+    rows.sort((a, b) => {{
+      const aVal = a.querySelectorAll('td')[col].innerText.trim();
+      const bVal = b.querySelectorAll('td')[col].innerText.trim();
+      const aNum = parseFloat(aVal);
+      const bNum = parseFloat(bVal);
+      if (!isNaN(aNum) && !isNaN(bNum)) return asc ? aNum - bNum : bNum - aNum;
+      return asc ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+    }});
+    rows.forEach(r => tbody.appendChild(r));
+    table.querySelectorAll('th').forEach((th, i) => {{
+      const base = th.textContent.replace(' ↑','').replace(' ↓','').replace(' ↕','');
+      th.textContent = base + (i === col ? (asc ? ' ↑' : ' ↓') : ' ↕');
+    }});
+  }}
+  </script>
 </body>
 </html>"""
 
