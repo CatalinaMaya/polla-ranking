@@ -255,26 +255,27 @@ def generar_html(ranking: list, output="index.html"):
   }}
 
   @media (max-width: 600px) {{
-    td, th {{
-      padding: 10px 8px;
-      font-size: 12px;
+      td, th {{
+        padding: 10px 8px;
+        font-size: 12px;
+      }}
+      td.nombre {{
+        max-width: none;
+        overflow: visible;
+        text-overflow: unset;
+        white-space: normal;
+        word-break: break-word;
+      }}
+      .podio-nombre {{
+        font-size: 11px;
+      }}
+      .podio-puntaje {{
+        font-size: 16px;
+      }}
+      h1 {{
+        font-size: 48px;
+      }}
     }}
-    td.nombre {{
-      max-width: 120px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }}
-    .podio-nombre {{
-      font-size: 11px;
-    }}
-    .podio-puntaje {{
-      font-size: 16px;
-    }}
-    h1 {{
-      font-size: 48px;
-    }}
-  }}
 
   th.sortable {{
     cursor: pointer;
