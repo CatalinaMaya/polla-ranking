@@ -68,6 +68,36 @@
   }
   button:hover { background: #2ea043; }
   button:disabled { background: #484f58; cursor: not-allowed; }
+
+  td.segunda {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    color: #bc8cff;
+    font-weight: 600;
+  }
+
+  @media (max-width: 600px) {
+    td, th {
+      padding: 10px 8px;
+      font-size: 12px;
+    }
+    td.nombre {
+      max-width: 120px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .podio-nombre {
+      font-size: 11px;
+    }
+    .podio-puntaje {
+      font-size: 16px;
+    }
+    h1 {
+      font-size: 48px;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -146,61 +176,70 @@
           <tr>
             <th>Participante</th>
             <th class="num">1ª Ronda</th>
-            <th class="num">Actual</th>
+            <th class="num">2ª Ronda</th>
+            <th class="num">Puntaje Pollaya</th>
           </tr>
         </thead>
         <tbody>
         <tr>
             <td class="nombre">Marcela Maya Iregui</td>
             <td class="num">299</td>
+            <td class="num segunda">118</td>
             <td class="num actual">716</td>
         </tr>
         <tr>
             <td class="nombre">Yenifer Avendaño Montoya</td>
             <td class="num">296</td>
+            <td class="num segunda">92</td>
             <td class="num actual">684</td>
         </tr>
         <tr>
             <td class="nombre">Carlos Hernan cadavid gonzalez</td>
             <td class="num">294</td>
+            <td class="num segunda">92</td>
             <td class="num actual">680</td>
         </tr>
         <tr>
             <td class="nombre">Catalina Maya Iregui</td>
             <td class="num">287</td>
+            <td class="num segunda">102</td>
             <td class="num actual">676</td>
         </tr>
         <tr>
             <td class="nombre">Alejandro Morales</td>
             <td class="num">284</td>
+            <td class="num segunda">108</td>
             <td class="num actual">676</td>
         </tr>
         <tr>
             <td class="nombre">Leopaispaisa</td>
             <td class="num">280</td>
+            <td class="num segunda">78</td>
             <td class="num actual">638</td>
         </tr>
         <tr>
             <td class="nombre">LUIS FERNANDO BUSTAMANTE MONSALVE</td>
             <td class="num">272</td>
+            <td class="num segunda">100</td>
             <td class="num actual">644</td>
         </tr>
         <tr>
             <td class="nombre">Soraya Iregui lotero</td>
             <td class="num">265</td>
+            <td class="num segunda">58</td>
             <td class="num actual">588</td>
         </tr>
         <tr>
             <td class="nombre">Hernando Maya</td>
             <td class="num">234</td>
+            <td class="num segunda">110</td>
             <td class="num actual">578</td>
         </tr></tbody>
       </table>
     </div>
   </section>
-
   
-  <p class="footer">Última actualización desde Pollaya: 01/07/2026 07:36 PM</p>
+  <p class="footer">Última actualización desde Pollaya: 01/07/2026 07:46 PM</p>
   <button onclick="actualizar()" id="btn">🔄 Actualizar ahora</button>
   <div id="progress-container" style="display:none; width:100%; max-width:760px; margin-top:16px;">
     <div style="font-size:12px; color:#8b949e; margin-bottom:6px;" id="progress-label">Actualizando... 0%</div>
