@@ -98,6 +98,14 @@
     }
   }
 
+  th.sortable {
+    cursor: pointer;
+    user-select: none;
+  }
+  th.sortable:hover {
+    color: #58a6ff;
+  }
+
 </style>
 </head>
 <body>
@@ -122,124 +130,126 @@
         <tr class="top3">
             <td class="pos">🥇</td>
             <td class="nombre">Marcela Maya Iregui</td>
-            <td class="num real">417</td>
+            <td class="num real">429</td>
         </tr>
         <tr class="top3">
             <td class="pos">🥈</td>
             <td class="nombre">Alejandro Morales</td>
-            <td class="num real">392</td>
+            <td class="num real">402</td>
         </tr>
         <tr class="top3">
             <td class="pos">🥉</td>
             <td class="nombre">Catalina Maya Iregui</td>
-            <td class="num real">389</td>
+            <td class="num real">401</td>
         </tr>
         <tr class="">
             <td class="pos">#4</td>
             <td class="nombre">Yenifer Avendaño Montoya</td>
-            <td class="num real">388</td>
+            <td class="num real">398</td>
         </tr>
         <tr class="">
             <td class="pos">#5</td>
             <td class="nombre">Carlos Hernan cadavid gonzalez</td>
-            <td class="num real">386</td>
+            <td class="num real">396</td>
         </tr>
         <tr class="">
             <td class="pos">#6</td>
             <td class="nombre">LUIS FERNANDO BUSTAMANTE MONSALVE</td>
-            <td class="num real">372</td>
+            <td class="num real">384</td>
         </tr>
         <tr class="">
             <td class="pos">#7</td>
             <td class="nombre">Leopaispaisa</td>
-            <td class="num real">358</td>
+            <td class="num real">372</td>
         </tr>
         <tr class="">
             <td class="pos">#8</td>
             <td class="nombre">Hernando Maya</td>
-            <td class="num real">344</td>
+            <td class="num real">358</td>
         </tr>
         <tr class="">
             <td class="pos">#9</td>
             <td class="nombre">Soraya Iregui lotero</td>
-            <td class="num real">323</td>
+            <td class="num real">337</td>
         </tr></tbody>
       </table>
     </div>
   </section>
 
   <section>
-    <div class="section-title">TABLA PUNTAJES</div>
-    <div class="card">
-      <table>
-        <thead>
-          <tr>
-            <th>Participante</th>
-            <th class="num">1ª Ronda</th>
-            <th class="num">2ª Ronda</th>
-            <th class="num">Puntaje Pollaya</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div class="section-title">PUNTAJES</div>
+      <div class="card">
+        <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+          <table id="tabla-puntajes" style="min-width: 500px;">
+            <thead>
+              <tr>
+                <th onclick="sortTable(0)" class="sortable" style="min-width:140px;">Participante ↕</th>
+                <th onclick="sortTable(1)" class="sortable num" style="min-width:80px;">1ª Ronda ↕</th>
+                <th onclick="sortTable(2)" class="sortable num" style="min-width:80px;">2ª Ronda ↕</th>
+                <th onclick="sortTable(3)" class="sortable num" style="min-width:80px;">Puntaje Pollaya ↕</th>
+              </tr>
+            </thead>
+            <tbody>
         <tr>
             <td class="nombre">Marcela Maya Iregui</td>
             <td class="num">299</td>
-            <td class="num segunda">118</td>
-            <td class="num actual">716</td>
+            <td class="num segunda">130</td>
+            <td class="num actual">728</td>
         </tr>
         <tr>
             <td class="nombre">Yenifer Avendaño Montoya</td>
             <td class="num">296</td>
-            <td class="num segunda">92</td>
-            <td class="num actual">684</td>
+            <td class="num segunda">102</td>
+            <td class="num actual">694</td>
         </tr>
         <tr>
             <td class="nombre">Carlos Hernan cadavid gonzalez</td>
             <td class="num">294</td>
-            <td class="num segunda">92</td>
-            <td class="num actual">680</td>
+            <td class="num segunda">102</td>
+            <td class="num actual">690</td>
         </tr>
         <tr>
             <td class="nombre">Catalina Maya Iregui</td>
             <td class="num">287</td>
-            <td class="num segunda">102</td>
-            <td class="num actual">676</td>
+            <td class="num segunda">114</td>
+            <td class="num actual">688</td>
         </tr>
         <tr>
             <td class="nombre">Alejandro Morales</td>
             <td class="num">284</td>
-            <td class="num segunda">108</td>
-            <td class="num actual">676</td>
+            <td class="num segunda">118</td>
+            <td class="num actual">686</td>
         </tr>
         <tr>
             <td class="nombre">Leopaispaisa</td>
             <td class="num">280</td>
-            <td class="num segunda">78</td>
-            <td class="num actual">638</td>
+            <td class="num segunda">92</td>
+            <td class="num actual">652</td>
         </tr>
         <tr>
             <td class="nombre">LUIS FERNANDO BUSTAMANTE MONSALVE</td>
             <td class="num">272</td>
-            <td class="num segunda">100</td>
-            <td class="num actual">644</td>
+            <td class="num segunda">112</td>
+            <td class="num actual">656</td>
         </tr>
         <tr>
             <td class="nombre">Soraya Iregui lotero</td>
             <td class="num">265</td>
-            <td class="num segunda">58</td>
-            <td class="num actual">588</td>
+            <td class="num segunda">72</td>
+            <td class="num actual">602</td>
         </tr>
         <tr>
             <td class="nombre">Hernando Maya</td>
             <td class="num">234</td>
-            <td class="num segunda">110</td>
-            <td class="num actual">578</td>
+            <td class="num segunda">124</td>
+            <td class="num actual">592</td>
         </tr></tbody>
-      </table>
-    </div>
-  </section>
+          </table>
+        </div>
+      </div>
+    </section>
   
-  <p class="footer">Última actualización desde Pollaya: 01/07/2026 07:46 PM</p>
+  <p class="footer">Última actualización desde Pollaya: 01/07/2026 07:56 PM</p>
   <button onclick="actualizar()" id="btn">🔄 Actualizar ahora</button>
   <div id="progress-container" style="display:none; width:100%; max-width:760px; margin-top:16px;">
     <div style="font-size:12px; color:#8b949e; margin-bottom:6px;" id="progress-label">Actualizando... 0%</div>
@@ -285,5 +295,29 @@
   }
   </script>
 
+  <script>
+  let sortDir = {};
+  function sortTable(col) {
+    const table = document.getElementById('tabla-puntajes');
+    const tbody = table.querySelector('tbody');
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+    const asc = !sortDir[col];
+    sortDir = {};
+    sortDir[col] = asc;
+    rows.sort((a, b) => {
+      const aVal = a.querySelectorAll('td')[col].innerText.trim();
+      const bVal = b.querySelectorAll('td')[col].innerText.trim();
+      const aNum = parseFloat(aVal);
+      const bNum = parseFloat(bVal);
+      if (!isNaN(aNum) && !isNaN(bNum)) return asc ? aNum - bNum : bNum - aNum;
+      return asc ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+    });
+    rows.forEach(r => tbody.appendChild(r));
+    table.querySelectorAll('th').forEach((th, i) => {
+      const base = th.textContent.replace(' ↑','').replace(' ↓','').replace(' ↕','');
+      th.textContent = base + (i === col ? (asc ? ' ↑' : ' ↓') : ' ↕');
+    });
+  }
+  </script>
 </body>
 </html>
