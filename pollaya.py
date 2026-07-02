@@ -135,8 +135,8 @@ def calcular_ranking(puntajes_actuales: dict) -> list:
             print(f"⚠️  '{nombre}' no encontrado en Pollaya.")
             actual = primera
         real = actual - primera
-        ranking.append({"nombre": nombre, "actual": actual, "primera": primera, "real": real})
-
+        segunda = actual - (primera * 2)
+        ranking.append({"nombre": nombre, "actual": actual, "primera": primera, "real": real, "segunda": segunda})
     ranking.sort(key=lambda x: x["real"], reverse=True)
     for i, p in enumerate(ranking):
         if i == 0 or p["real"] != ranking[i - 1]["real"]:
@@ -158,9 +158,10 @@ def generar_html(ranking: list, output="index.html"):
     for p in sorted(ranking, key=lambda x: list(PRIMERA_RONDA.keys()).index(x["nombre"])):
         filas_puntajes += f"""
         <tr>
-            <td class=\"nombre\">{p['nombre']}</td>
-            <td class=\"num\">{p['primera']}</td>
-            <td class=\"num actual\">{p['actual']}</td>
+            <td class="nombre">{p['nombre']}</td>
+            <td class="num">{p['primera']}</td>
+            <td class="num segunda">{p['segunda']}</td>
+            <td class="num actual">{p['actual']}</td>
         </tr>"""
 
     # Tabla 2: ranking por puntaje real
@@ -245,6 +246,36 @@ def generar_html(ranking: list, output="index.html"):
   }}
   button:hover {{ background: #2ea043; }}
   button:disabled {{ background: #484f58; cursor: not-allowed; }}
+
+  td.segunda {{
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    color: #bc8cff;
+    font-weight: 600;
+  }}
+
+  @media (max-width: 600px) {{
+    td, th {{
+      padding: 10px 8px;
+      font-size: 12px;
+    }}
+    td.nombre {{
+      max-width: 120px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }}
+    .podio-nombre {{
+      font-size: 11px;
+    }}
+    .podio-puntaje {{
+      font-size: 16px;
+    }}
+    h1 {{
+      font-size: 48px;
+    }}
+  }}
+
 </style>
 </head>
 <body>
@@ -278,14 +309,14 @@ def generar_html(ranking: list, output="index.html"):
           <tr>
             <th>Participante</th>
             <th class=\"num\">1ª Ronda</th>
-            <th class=\"num\">Actual</th>
+            <th class="num">2ª Ronda</th>
+            <th class=\"num\">Puntaje Pollaya</th>
           </tr>
         </thead>
         <tbody>{filas_puntajes}</tbody>
       </table>
     </div>
   </section>
-
   
   <p class=\"footer\">Última actualización desde Pollaya: {fecha}</p>
   <button onclick=\"actualizar()\" id=\"btn\">🔄 Actualizar ahora</button>
